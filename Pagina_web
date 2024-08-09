@@ -1,0 +1,34 @@
+import random
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return """<h1>Hello, World!</h1>
+           <a href="/noticias">¡Ver un dato aleatorio!</a>
+           <a href="/futbol">!Ver un record de futbol </a>"""
+        
+
+@app.route("/noticias")
+def hello_noticias():
+    noticias =  ["Según un estudio realizado en 2018, más del 50% de las personas de entre 18 y 34 años se consideran dependientes de sus smartphones",
+                 "La mayoría de las personas que sufren adicción tecnológica experimentan un fuerte estrés cuando se encuentran fuera del área de cobertura de la red o no pueden utilizar sus dispositivos",
+                 "El estudio de la dependencia tecnológica es una de las áreas más relevantes de la investigación científica moderna",
+                 "Según un estudio de 2019, más del 60% de las personas responden a mensajes de trabajo en sus smartphones en los 15 minutos siguientes a salir del trabajo",
+                 "Una forma de combatir la dependencia tecnológica es buscar actividades que aporten placer y mejoren el estado de ánimo",
+                 "Elon Musk afirma que las redes sociales están diseñadas para mantenernos dentro de la plataforma, para que pasemos el mayor tiempo posible viendo contenidos",
+                 "Elon Musk también aboga por la regulación de las redes sociales y la protección de los datos personales de los usuarios. Afirma que las redes sociales recopilan una enorme cantidad de información sobre nosotros, que luego puede utilizarse para manipular nuestros pensamientos y comportamientos",
+                 "Las redes sociales tienen aspectos positivos y negativos, y debemos ser conscientes de ambos cuando utilicemos estas plataformas"]
+    return  f'<p>{random.choice(noticias)}</p>'
+app.run(debug=True)
+
+@app.route("/futbol")
+def hello_futbol():
+    futbol =    ["el máximo goleador de la historia en partidos oficiales es el portugués Cristiano Ronaldo con 838 goles en 1.168 partidos",
+                 "La Pulga estableció un récord impresionante en 2012 al marcar 91 goles en un solo año calendario",
+                 "La selección nacional de Brasil ha sido la más exitosa en la historia de la Copa del Mundo de la FIFA, habiendo ganado el torneo en cinco ocasiones",
+                 "El gol más rápido: El récord del gol más rápido en la historia del fútbol lo tiene Ricardo Olivera, quien anotó a los 2.8 segundos del pitido inicial en un partido entre Rio Negro y Sorocaba",
+                 "Más títulos de liga: El récord de más títulos de liga ganados por un club de fútbol lo ostenta el Rangers Football Club, con 55 títulos de liga escocesa hasta la fecha"]
+    return  f'<p>{random.choice(futbol)}</p>'
+app.run(debug=True)
